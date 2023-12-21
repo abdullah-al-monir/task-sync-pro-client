@@ -1,20 +1,32 @@
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
+import useAuth from "../hooks/useAuth";
+import { enqueueSnackbar } from "notistack";
 const Navbar = () => {
+  const { user, logOut } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
-
+  const navigate = useNavigate();
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-
+  const handleLogOut = () => {
+    logOut();
+    navigate("/");
+    enqueueSnackbar("User logged out successfully", {
+      variant: "success",
+      autoHideDuration: 1500,
+    });
+  };
   return (
     <div>
       <nav className="relative bg-white shadow">
         <div className="max-w-screen-xl px-6 py-4 mx-auto md:flex md:justify-between md:items-center">
           <div className="flex items-center justify-between">
-            <Link to="/">Task Sync Pro</Link>
+            <Link className="font-bold text-2xl" to="/">
+              Task Sync Pro
+            </Link>
             <div className="flex md:hidden">
               <button
                 onClick={toggleMenu}
@@ -30,7 +42,7 @@ const Navbar = () => {
           <div
             className={`${
               isOpen ? "block" : "hidden"
-            } md:flex md:items-center md:w-auto md:space-x-6 space-y-2`}
+            } md:flex md:items-center md:w-auto md:space-x-6`}
           >
             <div className="flex flex-col md:flex-row md:gap-5 md:mx-6">
               <NavLink
@@ -59,20 +71,39 @@ const Navbar = () => {
               </a>
             </div>
 
-            <div className="lg:block">
-              <Link to="signIn">
-                <button className="bg-teal-500 hover:bg-teal-600 text-white px-2 py-1 rounded-lg text-sm md:text-base">
-                  Sign In
-                </button>
-              </Link>
-            </div>
-            <div className="lg:block">
-              <Link to="signUp">
-                <button className="bg-teal-500 hover:bg-teal-600 text-white px-2 py-1 rounded-lg text-sm md:text-base">
-                  Sign Up
-                </button>
-              </Link>
-            </div>
+            {user ? (
+              <div className="flex gap-2 items-center">
+                {" "}
+                <img
+                  className="w-14 h-14 rounded-full"
+                  src={user.photoURL}
+                  alt=""
+                />{" "}
+                <button
+                  onClick={handleLogOut}
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-2 py-1 rounded-lg text-sm md:text-base font-semibold"
+                >
+                  Log Out
+                </button>{" "}
+              </div>
+            ) : (
+              <>
+                <div className="lg:block mb-2 md:mb-0">
+                  <Link to="signIn">
+                    <button className="bg-blue-600 hover:bg-blue-700 text-white px-2 py-1 rounded-lg text-sm md:text-base font-semibold">
+                      Sign In
+                    </button>
+                  </Link>
+                </div>
+                <div className="lg:block">
+                  <Link to="signUp">
+                    <button className="bg-orange-600 hover:bg-orange-700 text-white px-2 py-1 rounded-lg text-sm md:text-base font-semibold">
+                      Sign Up
+                    </button>
+                  </Link>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </nav>
