@@ -1,7 +1,12 @@
 const AboutUs = () => {
   return (
-    <div className="container mx-auto mt-10">
+    <div className="container mx-auto my-10">
       <h1 className="text-3xl font-bold mb-5 text-center">About Us</h1>
+      <img
+        className="w-full mx-auto my-5"
+        src="https://www.swg.com/can/wp-content/uploads/sites/38/2014/09/About-us-banner.jpg"
+        alt=""
+      />
       <p className="text-lg">
         Welcome to our task management website! We are a dedicated team
         passionate about organizing tasks and improving productivity. Our goal
