@@ -19,6 +19,7 @@ const Navbar = () => {
       autoHideDuration: 1500,
     });
   };
+
   return (
     <div>
       <nav className="relative bg-white shadow">
@@ -51,14 +52,7 @@ const Navbar = () => {
               >
                 Home
               </NavLink>
-              {user && (
-                <NavLink
-                  className="my-2 text-gray-700 transition-colors duration-300 transform hover:text-blue-500 lg:mx-4 lg:my-0"
-                  to="/tasks/todo"
-                >
-                  Task Management
-                </NavLink>
-              )}
+
               <NavLink
                 className="my-2 text-gray-700 transition-colors duration-300 transform  hover:text-blue-500  lg:mx-4 lg:my-0"
                 to="/about"
