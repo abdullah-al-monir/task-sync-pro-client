@@ -1,8 +1,8 @@
-# React + Vite
+# Task Sync Pro
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ ## Live Link: https://task-sync-pro-401d7.web.app
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Fatures:
+  1. In the homepage banner there is a button "Lets Explore", by clicking the button visiors will redirected to signin page if he/she does not have any account then he/she can create an account by going to signup page. He/she also login using his/her google account.
+  2. After successful login, he/she redirected to Task Management dashboard where he/she can create task. Then the task will be added in todo page. Then he can change the task status to ongoing or complete by using drag and drop option.
+  3. From task management dashboard he/she can got to homepage and also can logout .
