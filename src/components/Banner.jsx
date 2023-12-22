@@ -21,7 +21,6 @@ const Banner = () => {
           </button>
         </Link>
       </div>
-      {/* Other sections or content */}
     </div>
   );
 };
