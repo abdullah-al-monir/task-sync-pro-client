@@ -43,7 +43,7 @@ const SignUp = () => {
             currentUser.displayName = name;
             currentUser.photoURL = photo;
             e.target.reset();
-            navigate("/");
+            navigate("/tasks/create-task");
             return enqueueSnackbar("User created successfully", {
               variant: "success",
               autoHideDuration: 1500,
@@ -70,7 +70,7 @@ const SignUp = () => {
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then(() => {
-        navigate("/");
+        navigate("/tasks/create-task");
         return enqueueSnackbar("User logged in successfully!", {
           variant: "success",
           autoHideDuration: 1500,

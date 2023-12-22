@@ -51,24 +51,26 @@ const Navbar = () => {
               >
                 Home
               </NavLink>
+              {user && (
+                <NavLink
+                  className="my-2 text-gray-700 transition-colors duration-300 transform hover:text-blue-500 lg:mx-4 lg:my-0"
+                  to="/tasks/todo"
+                >
+                  Task Management
+                </NavLink>
+              )}
               <NavLink
-                className="my-2 text-gray-700 transition-colors duration-300 transform hover:text-blue-500 lg:mx-4 lg:my-0"
-                to="/"
-              >
-                Shop
-              </NavLink>
-              <a
                 className="my-2 text-gray-700 transition-colors duration-300 transform  hover:text-blue-500  lg:mx-4 lg:my-0"
-                to="/"
+                to="/about"
+              >
+                About Us
+              </NavLink>
+              <NavLink
+                className="my-2 text-gray-700 transition-colors duration-300 transform  hover:text-blue-500  lg:mx-4 lg:my-0"
+                to="/contact"
               >
                 Contact
-              </a>
-              <a
-                className="my-2 text-gray-700 transition-colors duration-300 transform  hover:text-blue-500  lg:mx-4 lg:my-0"
-                to="/"
-              >
-                About
-              </a>
+              </NavLink>
             </div>
 
             {user ? (

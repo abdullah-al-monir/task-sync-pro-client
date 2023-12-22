@@ -20,7 +20,7 @@ const SignIn = () => {
     signInUser(email, password)
       .then(() => {
         e.target.reset();
-        navigate("/");
+        navigate("/tasks/todo");
         return enqueueSnackbar("User logged in successfully", {
           variant: "success",
           autoHideDuration: 1500,
@@ -41,7 +41,7 @@ const SignIn = () => {
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then(() => {
-        navigate("/");
+        navigate("/tasks/create-task");
         return enqueueSnackbar("User logged in successfully!", {
           variant: "success",
           autoHideDuration: 1500,
