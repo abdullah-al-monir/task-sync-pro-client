@@ -5,7 +5,7 @@ import { IoClose } from "react-icons/io5";
 import useAuth from "../hooks/useAuth";
 import { enqueueSnackbar } from "notistack";
 const Navbar = () => {
-  const { user, logOut } = useAuth();
+  const { user, logOut, loading } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const toggleMenu = () => {
@@ -52,7 +52,14 @@ const Navbar = () => {
               >
                 Home
               </NavLink>
-
+              {user && (
+                <NavLink
+                  className="my-2 text-gray-700 transition-colors duration-300 transform hover:text-blue-500 lg:mx-4 lg:my-0"
+                  to="/tasks/todo"
+                >
+                  Task Management
+                </NavLink>
+              )}
               <NavLink
                 className="my-2 text-gray-700 transition-colors duration-300 transform  hover:text-blue-500  lg:mx-4 lg:my-0"
                 to="/about"

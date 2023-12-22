@@ -3,12 +3,10 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useDrop } from "react-dnd";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { enqueueSnackbar } from "notistack";
-import useGetTasks from "../../hooks/useGetTasks";
 const Dashboard = () => {
   const { user, logOut } = useAuth();
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
-  const { refetch } = useGetTasks();
   const handleDrop = (status) => (item) => {
     console.log(status);
     axiosPublic
@@ -19,7 +17,6 @@ const Dashboard = () => {
             variant: "success",
             autoHideDuration: 1500,
           });
-          refetch();
           navigate(`/tasks/${status.toLowerCase()}`);
         }
       })
