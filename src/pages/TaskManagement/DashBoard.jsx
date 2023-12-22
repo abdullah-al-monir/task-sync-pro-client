@@ -13,7 +13,7 @@ const Dashboard = () => {
       .patch(`/update/${item.task._id}`, { status: status })
       .then((res) => {
         if (res.data.modifiedCount) {
-          enqueueSnackbar(`Task removed to ${status}`, {
+          enqueueSnackbar(`Task moved to ${status}`, {
             variant: "success",
             autoHideDuration: 1500,
           });
