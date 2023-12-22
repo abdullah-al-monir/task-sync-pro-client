@@ -57,13 +57,27 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="mt-8">
+    <div className="mt-8 flex flex-col">
       <div className="flex flex-col items-center justify-center gap-5 my-10">
         <img className="rounded-full w-24 h-24" src={user?.photoURL} alt="" />
         <h4 className="text-2xl  font-bold">{user?.displayName}</h4>
       </div>
-
-      <nav>
+      <div className="md:hidden ">
+        <Link
+          className="bg-lime-600 w-full block text-center hover:bg-lime-700 text-white px-2 py-1 rounded-lg text-sm md:text-base font-semibold my-2"
+          to="/"
+        >
+          Home
+        </Link>
+        <button
+          onClick={handleLogOut}
+          className="bg-red-600 w-full hover:bg-red-700 text-white px-2 py-1 rounded-lg text-sm md:text-base font-semibold"
+        >
+          Log Out
+        </button>
+        <hr className="my-5" />
+      </div>
+      <nav className="w-full">
         <ul>
           <li className="w-full p-2 my-2 text-lg font-semibold bg-blue-400">
             <NavLink className="w-full block" to="/tasks/create-task">
@@ -99,19 +113,21 @@ const Dashboard = () => {
           </li>
         </ul>
       </nav>
-      <hr className="my-5" />
-      <Link
-        className="bg-lime-600 w-full block text-center hover:bg-lime-700 text-white px-2 py-1 rounded-lg text-sm md:text-base font-semibold my-2"
-        to="/"
-      >
-        Home
-      </Link>
-      <button
-        onClick={handleLogOut}
-        className="bg-red-600 w-full hover:bg-red-700 text-white px-2 py-1 rounded-lg text-sm md:text-base font-semibold"
-      >
-        Log Out
-      </button>
+      <div className="hidden md:block">
+        <hr className="my-5" />
+        <Link
+          className="bg-lime-600 w-full block text-center hover:bg-lime-700 text-white px-2 py-1 rounded-lg text-sm md:text-base font-semibold my-2"
+          to="/"
+        >
+          Home
+        </Link>
+        <button
+          onClick={handleLogOut}
+          className="bg-red-600 w-full hover:bg-red-700 text-white px-2 py-1 rounded-lg text-sm md:text-base font-semibold"
+        >
+          Log Out
+        </button>
+      </div>
     </div>
   );
 };

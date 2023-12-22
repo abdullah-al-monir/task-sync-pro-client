@@ -77,7 +77,7 @@ const Navbar = () => {
               <div className="flex gap-2 items-center">
                 {" "}
                 <img
-                  className="w-14 h-14 rounded-full"
+                  className="w-14 h-14 rounded-full hidden md:block"
                   src={user.photoURL}
                   alt=""
                 />{" "}

@@ -11,7 +11,7 @@ const ContactUs = () => {
             alt=""
           />
         </div>
-        <div>
+        <div className="mb-5">
           <h1 className="text-3xl font-bold mb-5 text0center">Contact Us</h1>
           <p className="text-lg">
             If you have any questions, suggestions, or feedback, please feel

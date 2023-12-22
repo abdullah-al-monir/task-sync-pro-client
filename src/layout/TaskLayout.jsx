@@ -4,9 +4,9 @@ import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 const TaskLayout = () => {
   return (
-    <div className="max-w-screen-xl mx-auto flex">
+    <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row">
       <DndProvider backend={HTML5Backend}>
-      <div className="w-64 min-h-screen bg-purple-300 p-5">
+      <div className="w-full md:w-64 h-full md:min-h-screen bg-purple-300 p-5">
         <Dashboard />
       </div>
       <div className="flex-1 p-5">
