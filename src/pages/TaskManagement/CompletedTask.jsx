@@ -4,6 +4,8 @@ import useGetTasks from "../../hooks/useGetTasks";
 import { MdDeleteSweep } from "react-icons/md";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { enqueueSnackbar } from "notistack";
+import { IoMenuOutline } from "react-icons/io5";
+import Loader from "../../components/Loader";
 
 const Task = ({ task, refetch }) => {
   const axiosPublic = useAxiosPublic();
@@ -26,34 +28,66 @@ const Task = ({ task, refetch }) => {
       .catch((error) => console.log(error));
   };
   return (
-    <li
-      className="bg-green-200 p-2 rounded-lg flex justify-between items-center text-center my-2"
+    <tr
+      className="bg-gray-200 text-center my-2 "
       ref={drag}
       style={{ opacity: isDragging ? 0.5 : 1 }}
     >
-      <h3 className="font-semibold">{task.title}</h3> <p>{task.description}</p>{" "}
-      <p>{task.deadline.slice(0, 10)}</p>
-      <p>{task.priority.label}</p>
-      <button onClick={() => handleDeleteTask(task._id)}>
-        <MdDeleteSweep className="text-xl text-red-500" />
-      </button>
-    </li>
+      <td className="p-2">
+        <IoMenuOutline className="" />
+      </td>
+      <td className="font-semibold border p-2 text-left">{task.title}</td>
+      <td className="border p-2">{task.description}</td>
+      <td className="border p-2">{task.deadline.slice(0, 10)}</td>
+      <td className="border p-2">{task.priority.label}</td>
+      <td className="border p-2">
+        <button onClick={() => handleDeleteTask(task._id)}>
+          <MdDeleteSweep className="text-xl text-red-500" />
+        </button>
+      </td>
+    </tr>
   );
 };
 
 const CompletedTask = () => {
-  const { tasks, refetch } = useGetTasks({ status: "Completed" });
+  const { tasks, refetch, isFetching } = useGetTasks({ status: "Completed" });
 
   return (
     <div>
       <h2 className="text-center my-10 text-4xl font-semibold">
         Completed Tasks
       </h2>
-      <ul>
-        {tasks?.map((task, index) => (
-          <Task key={index} task={task} refetch={refetch} />
-        ))}
-      </ul>
+      {isFetching ? (
+        <Loader color={"#86EFAC"} />
+      ) : (
+        <>
+          {tasks.length === 0 ? (
+            <p className="text-center font-semibold text-red-500 text-xl">
+              There is no completed task
+            </p>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse border">
+                <thead className=" bg-green-200">
+                  <tr>
+                    <th className="p-2"></th>
+                    <th className="border p-2 text-left">Task</th>
+                    <th className="border p-2">Description</th>
+                    <th className="border p-2">Deadline</th>
+                    <th className="border p-2">Priority</th>
+                    <th className="border p-2">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {tasks?.map((task, index) => (
+                    <Task key={index} task={task} refetch={refetch} />
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </>
+      )}
     </div>
   );
 };

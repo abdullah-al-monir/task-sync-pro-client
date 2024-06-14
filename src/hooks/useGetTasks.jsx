@@ -7,7 +7,11 @@ const useGetTasks = ({ status }) => {
   console.log(status);
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
-  const { data: tasks = [], refetch } = useQuery({
+  const {
+    data: tasks = [],
+    refetch,
+    isFetching,
+  } = useQuery({
     queryKey: ["tasks", user?.email, status],
     queryFn: async () => {
       const res = await axiosPublic.get(
@@ -17,7 +21,7 @@ const useGetTasks = ({ status }) => {
     },
   });
 
-  return { tasks, refetch };
+  return { tasks, refetch, isFetching };
 };
 
 export default useGetTasks;
